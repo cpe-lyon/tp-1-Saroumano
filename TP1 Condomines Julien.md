@@ -28,9 +28,11 @@
 11. Il faut utiliser la commande -rm rf afin de supprimer l'ensemble du dossier et de son sous dossier.
 
 
-## Rename a file
+### Commandes importantes
 
-You can rename the current file by clicking the file name in the navigation bar or by clicking the **Rename** button in the file explorer.
+1. Afin d'afficher uniquement la date, on peut utiliser la commande -date %t.
+2. 
+3. Il faut utiliser la commande -realpath suivi du nom de la commande
 
 ## Delete a file
 
