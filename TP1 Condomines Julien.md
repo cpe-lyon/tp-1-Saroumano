@@ -62,7 +62,7 @@
 1. Pour lancer la console nano, il faut rentrer la commande nano -w log.txt
 2. Il faut utiliser la commande ctrl+\
 3. z
-4. Il faut utiliser la commande alt +u afin d'annueler la commande réaliser 
+4. Il faut utiliser la commande alt +u afin d'annuler la commande réaliser 
 5. Pour enregistrer, on utilise la commande ctrl +s.
 
 
