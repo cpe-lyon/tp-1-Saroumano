@@ -37,11 +37,40 @@
 5. On peut utiliser la commande ls /bin pour afficher le contenu du dossier
 6. La commande ls .. présente l'ensemble des dossier présents dans le répertoire ainsi que les fichiers qu'ils contiennent.
 7. On peut utiliser la commande pwd pour avoir accès au chemin complet du dossier courant 
-8. z
-9. z
+8. Elle redirige le contenu de la commande vers un fichier et l'écrase si existant.
+9. Elle redirige le contenu de la commande vers la fin d'un fichier.
 10. La commande sleep 10 va faire temporiser pendant 10 seconde le départ de la commande echo 'toto'.
 11. La commande file est utilisée pour déterminer le type du fichier sélectionné.
 12. z
 13. z
 14. Le raccourci clavier permettant d'arreter le défilement est Ctrl + z
-15. 
+15. z
+16. La commande affiche des coma en indiscontinu (représentant le chemin $Home ?)
+17. Le fichier /etc/passwd contient toutes les informations relatives aux utilisateurs. On y accède dans le manuel avec la commande man 5 passwd
+18. Il faut utiliser la commande sort -r.
+19. Pour savoir qui a un compte sur la machine il faut utilsier la commande w
+20. Il y a 141 pages de manuel contiennent le mot clé "conversion".
+21. z
+22. z
+23. z
+24. Il se trouve dans le chemin /var/log/apt/history.log
+25. Il est impossible de la trouver à l'aide de la commande locate, elle ne recherche pas dans le bon endroit, il faut donc utiliser la commande find.
+
+
+### Découverte de l'éditeur de texte nano
+
+1. Pour lancer la console nano, il faut rentrer la commande nano -w log.txt
+2. Il faut utiliser la commande ctrl+\
+3. z
+4. Il faut utiliser la commande alt +u afin d'annueler la commande réaliser 
+5. Pour enregistrer, on utilise la commande ctrl +s.
+
+
+### Personnalisation du shell 
+
+1. On créer la copie du fichier avec la commande cp 
+2. On décommente la fonction dans le fichier 
+3. On force les changements avec la commande source.
+4. On remplace la ligne par la commande \[\033[35m]\u@\h\[\033[35m\]
+
+
