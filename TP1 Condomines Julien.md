@@ -1,76 +1,146 @@
 ﻿# 			TP1 Condomines Julien
 
-
-
-## Exercice 2
-
-
-
+## Exercice 2. Prise en main de l’interpréteur de commandes
+	
 ### Manuel
-
-1. On cherche tout d'abord à comprendre l'utilité de la commande which, on va donc rentrer la commande -man which, celle ci nous permettra donc d'obtenir le chemin ou les fichiers qui seront exécuter en cas de commandes. 
-2. Si l'on souhaite faire une recherche à l'intérieur du manuel, ici option on utilise la commande -find
-3. Si l'on souhaite quitter la page du manuel, il faut faut presser la touche -q.
-4. L'introduction de la section 6 nous annonce que c'est dans cette même section que nous pourrons retrouver les jeux et les programmes non essentielles. 
-
-
+	
+#### Question 1 : A l’aide du manuel, identifiez le rôle de la commande which
+La commande ```which``` renvoie le chemin des fichiers (ou liens) qui seraient éxécutés dans l'environnement courant si ddes arguments avaient été données comme commandes dans un interpréteur de commandes strictement conforme à POSIX. pour ce faire, ```which``` cherche dans la variable PATH les fichiers éxécutables correspondant aux noms des arguments. ```which``` ne normalise pas les chemins.
+		
+#### Question 2 : Quelle commande permet de rechercher le mot option dans cette page ?
+Lorsque l'on a tapé ```man which``` on tape ensuite ```/options```.
+		
+#### Question 3 : Comment quitte-t-on le manuel ?
+On quitte le manuel en pressant la touche "q".
+	
+#### Question 4 : Afficher la première page de la section 6 ; de quoi parle cette section ?
+On tape la commande ```man 6 intro```.
+			
 ### Navigation dans l’arborescence des fichiers
-1. On va tout d'abord utiliser la commande -cd /var/log pour ce rendre dans le fichier voulu.
-2. Pour revenir au /var en utilisant un chemin relatif il faut utiliser la commande  -cd -.. 
-3. On utilise la commande -cd ~/ pour retourner directement à la racine 
-4. On utilise la commande -cd - pour retourner au dossier dans lequel on travaillait précédemment.
-5. Lorsque l'on souhaite accéder au dossier /root, un message d'erreur s'affiche nous indiquant que nous n'avons pas les permissions nécessaire. 
-6. Lorsque nous essayons de lancer la commande -sudo cd /root, un message d'erreur indique que la commmande cd est introuvable, cela est dûe au faite que la commande cd est une commande faite pour le shell, interne à Bash et qu'elle ne peut donc pas être lancé directement à l'aide de la commande sudo.
-7. Pour créer un dossier, il faut utiliser la commande -mkdir et renseigner le nom que l'on veut donner au dossier. On se rend ensuite dans le dossier en question à l'aide de la commande cd, puis à l'aide de la commande -touch suivi du nom que l'on veut donner au fichier.cd
-8. Depuis notre dossier personnel, en utilisant la commande -rm précédé du chemin définis à l'aide de la commande -cd, il est possible de supprimer le fichier1. Cependant, la même commande ne fonctionnera pas pour le Dossier1 un message d'erreur apparaitra nous indiquant que l'on ne peut le supprimer car c'est un dossier. 
-9. Afin de supprimer un dossier il faut utiliser la commande -rmdir;
-10. Un message d'erreur apparait indiquant qu'il est impossible de supprimer le dossier car il contient des sous dossier.
-11. Il faut utiliser la commande -rm rf afin de supprimer l'ensemble du dossier et de son sous dossier.
+	
+#### Question 1 : allez dans le dossier /var/log
+On tape la commande ```cd /var/log```.
+		
+#### Question 2 : remontez dans le dossier parent (/var) en utilisant un chemin relatif
+On éxécute la commande ```cd ..```.
+		
+#### Question 3 : retournez dans le dossier personnel
+On éxécute la commande ```cd ~```.
+		
+#### Question 4 : revenez au dossier précédent (/var)
+On éxécute la commande ```cd /var```.
+		
+#### Question 5 : essayez d’accéder au dossier /root ; que se passe-t-il ?
+On obtient une erreur système : "permission denied".
+		
+#### Question 6 : essayez la commande sudo cd /root ; que se passe-t-il ? Expliquez
+On nous demande de saisir le mdp admin mais au final on obtient un "command not found". La commande ```sudo``` n'est disponible qu'en bash.
+		
+#### Question 7 : à partir de votre dossier personnel, créez l’arborescence suivante :
+```bash
+mkdir Dossier1 Dossier2 Dossier2/Dossier2.1 Dossier2/Dossier2.2
+touch Dossier1/Fichier1 Dossier2/Dossier2.2/Fichier2 Dossier2/Dossier2.2/Fichier3
+``` 
+		
+#### Question 8 : revenez dans votre dossier personnel ; à l’aide de la commande rm, essayez de supprimer Fichier1, puis Dossier1 ; que se passe-t-il ?
+Ca ne le supprime pas car le dossier n'est pas vide.
+	
+#### Question 9 : quelle commande permet de supprimer un dossier ?
+Il suffit de saisir ```rmdir``` pour supprimer le dossier vide.
+
+#### Question 10 : que se passe-t-il quand on applique cette commande à Dossier2 ?
+Le dossier n'est pas supprimé car il n'est pas vide.
+
+#### Question 11 : comment supprimer en une seule commande Dossier2 et son contenu ?
+Il suffit de saisir ```rm -rf``` pour supprimer le dossier (et son contenu).
 
 
-### Commandes importantes
+## Exercice 3. Découverte de l’éditeur de texte nano
+	
+#### Question1 : Quelle commande permet d’afficher l’heure ? A quoi sert la commande time ?
+Il suffit de saisir ```date +%T```. ```time``` renvoie l'heure actuelle sous forme du nombre de secondes écoulées depuis le 1er janvier 1970 à 00h 00m 00s GMT, le début de l'Ère Unix.
+		
+#### Question2 : Dans votre dossier personnel, tapez successivement les commandes ls puis la ; que peut-on en déduire sur les fichiers commençant par un point ?
+Les fichiers commençant par un point sont des fichiers cachés.
+		
+#### Question3 : Où se situe le programme ls ?
+Grace à la commande ```whereis ls``` on voit qu'il est situé dans le dossier /bin/ls /usr/share/man/man1/ls.1.gz
+		
+#### Question 4 : Que fait la commande ll ? (indice : la commande alias peut vous aider)
+Elle permet de lister tout le contenu présent dans le répertoire actuel (avec des données supplémentaires tel que les droits).
+		
+#### Question 5 : Quelle commande permet d’afficher les fichiers contenus dans le dossier /bin ?
+Grace à la commande ```ls /bin```.
+		
+#### Question 6 : Que fait la commande ls .. ?
+Elle affiche le contenu du dossier parent.
+		
+#### Question 7 : Quelle commande donne le chemin complet du dossier courant ?
+Grace à la commande ```pwd```.
+		
+#### Question 8 : Que fait la commande echo 'yo' > plop exécutée 2 fois ?
+La première éxécution de commande permet d'écrire "yo" dans le fichier plop (il est créé s'il n'existe pas) et la seconde commande va écraser le contenu du fichier.
+		
+#### Question 9 : Que fait la commande echo 'yo' >> plop exécutée 2 fois ?
+La première éxécution de commande permet d'écrire "yo" dans le fichier plop (il est créé s'il n'existe pas) et la seconde commande va rajouter le texte "yo" à la fin du fichier.
+		
+#### Question 10 : A quoi sert la commande file ? Essayez la sur des fichiers de types différents.
+La commande ```file``` permet gràce à ses tests de déterminer le type de fichier présent en utilisant les metadonnées du fichier sans se soucier de l'extension (ASCCI, empty...).
+		
+#### Question 11 : Créez un fichier toto qui contient la chaîne Hello Toto ! ; créer ensuite un lien titi vers ce fichier avec la commande ln toto titi. Modifiez à présent le contenu de toto et affichez le contenu de titi : qu’observe-t-on ? Supprimez le fichier toto ; quelle conséquence cela a-t-il sur titi ?
+En affichant le contenu de titi on observe exactement le même contenu que celui de toto.
+En supprimant le fichier toto le lien s'est rompu et titi existe toujours avec son contenu.
+		
+#### Question 12 : Créez à présent un lien symbolique tutu sur titi avec la commande ln -s titi tutu. Modifiez le contenu de titi ; quelle conséquence pour tutu ? Et inversement ? Supprimez le fichier titi ; quelle conséquence cela a-t-il sur tutu ?
+On peut créer du contenu dans les 2 fichiers à partir de l'un ou de l'autre. Mais une fois l'un des fichiers supprimé le lien se rompt définitivement et le contenu est supprimé.
+		
+#### Question 13 : Affichez à l’écran le fichier /var/log/syslog. Quels raccourcis clavier permettent d’interrompre et reprendre le défilement à l’écran ?
+Il faut taper la commande ```ctrl+Z``` et de taper ```bg``` pour déplacer le processus en background.
+	
+#### Question 14 : Affichez les 5 premières lignes du fichier /var/log/syslog, puis les 15 dernières, puis seulement les lignes 10 à 20.
+Il faut exécuter ```head -5 /var/log/syslog```  
+Il faut exécuter ```tail -15 /var/log/syslog```  
+Il faut exécuter ```sed -n 10,20p /var/log/syslog```  
+		
+#### Question 15 : Que fait la commande dmesg | less ?
+La commande ```dmesg``` affiche le buffer du noyau.
+L'option ```less``` permet d'afficher le contenu page par page et permet de naviguer.
+		
+#### Question 16 : Affichez à l’écran le fichier /etc/passwd ; que contient-il ? Quelle commande permet d’afficher la page de manuel de ce fichier ?
+Le fichier "/etc/passwd" contient les mots de passe cryptés des utilisateurs.
+		
+#### Question 17 : Affichez seulement la première colonne triée par ordre alphabétique inverse
+Pour afficher la première colonne du fichier "/etc/passwd" triée par ordre alphabétique inverse, il faut taper respectivement les 2 commandes suivantes : 
+```bash
+cut -c1 /etc/passwd > toto.txt
+sort -r toto.txt
+```
+		
+#### Question 18 : Quelle commande nous donne le nombre d’utilisateurs ?
+La commande ```wc -l /etc/passwd``` permet de compter le nombre de lignes du fichier, et donc le nombre d'utilisateurs.
+		
+#### Question 19 : Combien de pages de manuel comportent le mot-clé conversion dans leur description ?
+La commande ```man -k conversion | wc -1``` permet d'afficher les pages du manuel comportant le mot "conversion"
+		
+#### Question 20 : A l’aide de la commande find, recherchez tous les fichiers se nommant passwd présents sur la machine
+La commande ```find -name passwd``` permet de rechercher tous les fichiers se nommant passwd
+		
+#### Question 21 : Modifiez la commande précédente pour que la liste des fichiers trouvés soit enregistrée dans le fichier ~/list_passwd_files.txt et que les erreurs soient redirigées vers le fichier spécial /dev/null
+La commande ```find -name passwd > list_passwd_files.text 2> /dev/null``` permet de rechercher tous les fichiers nommé passwd. ">" permet de sauver les recherche dans le fichier nommé ensuite et 2> permet de sauver les erreurs.
+	
+#### Question 22 : Dans votre dossier personnel, utilisez la commande grep pour chercher où est défini l’alias ll vu précédemment
+La commande ```grep 'alias ll'``` permet de retrouver l'alias.
+	
+#### Question 23 : Utilisez la commande locate pour trouver le fichier history.log.
+		
+#### Question 24 : Créer un fichier dans votre dossier personnel puis utilisez locate pour le trouver. Apparaît-il ? Pourquoi ? 
+La commande ```locate history.log``` permet de trouver le log history. On ne trouve pas le fichier créé dans le dossier personnel avec la commande "locate" puisque le fichier n'a pas été ajouté à la base de donnée que parcourt la commande locate. Il faut raffraichir cette base de donnée pour afficher le dossier.
 
-1. Afin d'afficher uniquement la date, on peut utiliser la commande -date %t.
-2. 
-3. Il faut utiliser la commande -realpath suivi du nom de la commande
-4. z
-5. On peut utiliser la commande ls /bin pour afficher le contenu du dossier
-6. La commande ls .. présente l'ensemble des dossier présents dans le répertoire ainsi que les fichiers qu'ils contiennent.
-7. On peut utiliser la commande pwd pour avoir accès au chemin complet du dossier courant 
-8. Elle redirige le contenu de la commande vers un fichier et l'écrase si existant.
-9. Elle redirige le contenu de la commande vers la fin d'un fichier.
-10. La commande sleep 10 va faire temporiser pendant 10 seconde le départ de la commande echo 'toto'.
-11. La commande file est utilisée pour déterminer le type du fichier sélectionné.
-12. z
-13. z
-14. Le raccourci clavier permettant d'arreter le défilement est Ctrl + z
-15. z
-16. La commande affiche des coma en indiscontinu (représentant le chemin $Home ?)
-17. Le fichier /etc/passwd contient toutes les informations relatives aux utilisateurs. On y accède dans le manuel avec la commande man 5 passwd
-18. Il faut utiliser la commande sort -r.
-19. Pour savoir qui a un compte sur la machine il faut utilsier la commande w
-20. Il y a 141 pages de manuel contiennent le mot clé "conversion".
-21. z
-22. z
-23. z
-24. Il se trouve dans le chemin /var/log/apt/history.log
-25. Il est impossible de la trouver à l'aide de la commande locate, elle ne recherche pas dans le bon endroit, il faut donc utiliser la commande find.
 
-
-### Découverte de l'éditeur de texte nano
-
-1. Pour lancer la console nano, il faut rentrer la commande nano -w log.txt
-2. Il faut utiliser la commande ctrl+\
-3. z
-4. Il faut utiliser la commande alt +u afin d'annuler la commande réaliser 
-5. Pour enregistrer, on utilise la commande ctrl +s.
-
-
-### Personnalisation du shell 
-
-1. On créer la copie du fichier avec la commande cp 
-2. On décommente la fonction dans le fichier 
-3. On force les changements avec la commande source.
-4. On remplace la ligne par la commande \[\033[35m]\u@\h\[\033[35m\]
-
-
+## Exercice 4. Personnalisation du shell
+	
+La commande ```source .bashrc``` permet de recharger le fichier .bashrc.  
+Afin d'obtenir le même affichage que l'énnoncé, on utilise la commande : 
+```bash
+PS1='${debian_chroot:+($debian_chroot)}[\033[35m]\A[\033[00m]-[\033[01;92m]\u@\h[\033[00m]:[\033[94m]\w[\033[00m]$'
+```
